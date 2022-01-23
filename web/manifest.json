@@ -1,6 +1,6 @@
 {
-    "name": "file_manager",
-    "short_name": "file_manager",
+    "name": "email_passwort_login",
+    "short_name": "email_passwort_login",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
