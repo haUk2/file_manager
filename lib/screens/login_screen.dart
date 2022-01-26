@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
         minWidth: MediaQuery.of(context).size.width,
         onPressed: () {
           Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => HomeScreen()));
+              context, MaterialPageRoute(builder: (context) => HomeScreen()));
         },
         child: Text(
           "Login",
@@ -113,15 +113,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
-                              context,
-                               MaterialPageRoute(
-                                 builder: (context) =>
-                                  RegistrationScreen()));
-
-
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        RegistrationScreen()));
                           },
                           child: Text(
-                            "SignUp",
+                            "Sign Up",
                             style: TextStyle(
                               color: Colors.redAccent,
                               fontWeight: FontWeight.w600,
