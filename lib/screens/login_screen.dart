@@ -199,6 +199,10 @@ class _LoginScreenState extends State<LoginScreen> {
           case "operation-not-allowed":
             errorMessage = "Einloggen mit Email und Passwort ist nicht erlaubt";
             break;
+          case "email-already-in-use":
+            errorMessage = "Email-Adresse ist bereits in Verwendung";
+            break;
+
           default:
             errorMessage = "An undefined Error happened.";
         }
