@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
         validator: (value) {
           RegExp regex = new RegExp(r'^.{6,}$');
           if (value!.isEmpty) {
-            return ("Password erforderlich");
+            return ("Passwort erforderlich");
           }
           if (!regex.hasMatch(value)) {
             return ("Gültiges Passwort eingeben (min. 6 Zeichen)");
