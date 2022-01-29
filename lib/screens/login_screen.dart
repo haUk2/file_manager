@@ -25,6 +25,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final _auth = FirebaseAuth.instance;
 
+  // String for displaying the error message
+
+  String? errorMessage;
+
   @override
   Widget build(BuildContext context) {
     //email field
@@ -34,12 +38,12 @@ class _LoginScreenState extends State<LoginScreen> {
         keyboardType: TextInputType.emailAddress,
         validator: (value) {
           if (value!.isEmpty) {
-            return ("Please enter your Email");
+            return ("Bitte Email-Adresse eingeben");
           }
           // reg expression for email validation
           if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
               .hasMatch(value)) {
-            return ("Please enter a valid email");
+            return ("Bitte gültige Email eingeben");
           }
           return null;
         },
@@ -65,10 +69,10 @@ class _LoginScreenState extends State<LoginScreen> {
         validator: (value) {
           RegExp regex = new RegExp(r'^.{6,}$');
           if (value!.isEmpty) {
-            return ("Password is required for login");
+            return ("Password erforderlich");
           }
           if (!regex.hasMatch(value)) {
-            return ("Enter valid password (Min. 6 Characters)");
+            return ("Gültiges Passwort eingeben (min. 6 Zeichen)");
           }
         },
         onSaved: (value) {
@@ -78,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
         decoration: InputDecoration(
           prefixIcon: Icon(Icons.vpn_key),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Password",
+          hintText: "Passwort",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -87,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final loginButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
-      color: Colors.redAccent,
+      color: Colors.cyanAccent,
       child: MaterialButton(
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
@@ -95,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
           signIn(emailController.text, passwordController.text);
         },
         child: Text(
-          "Login",
+          "Einloggen",
           textAlign: TextAlign.center,
           style: TextStyle(
               fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
@@ -119,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                         height: 200,
                         child: Image.asset(
-                          "assets/amazon-logo-a.png",
+                          "assets/logo.png",
                           fit: BoxFit.contain,
                         )),
                     SizedBox(height: 45),
@@ -132,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text("Don't have an account?"),
+                        Text("Sie haben keinen Account? "),
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
@@ -142,9 +146,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                         RegistrationScreen()));
                           },
                           child: Text(
-                            "Sign Up",
+                            "Registrieren",
                             style: TextStyle(
-                              color: Colors.redAccent,
+                              color: Colors.cyanAccent,
                               fontWeight: FontWeight.w600,
                               fontSize: 15,
                             ),
@@ -162,19 +166,45 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  //login function
+  // login function
   void signIn(String email, String password) async {
     if (_formKey.currentState!.validate()) {
-      await _auth
-          .signInWithEmailAndPassword(email: email, password: password)
-          .then((uid) => {
-                Fluttertoast.showToast(msg: "Login Successful"),
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => HomeScreen())),
-              })
-          .catchError((e) {
-        Fluttertoast.showToast(msg: e!.message);
-      });
+      try {
+        await _auth
+            .signInWithEmailAndPassword(email: email, password: password)
+            .then((uid) => {
+                  Fluttertoast.showToast(msg: "Login erfolgreich"),
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => HomeScreen())),
+                });
+      } on FirebaseAuthException catch (error) {
+        switch (error.code) {
+          case "invalid-email":
+            errorMessage = "Ihre Email Adresse ist ungültig";
+
+            break;
+          case "wrong-password":
+            errorMessage = "Ihr Passwort ist falsch";
+            break;
+          case "user-not-found":
+            errorMessage = "Benutzer mit dieser Email-Adresse existiert nicht";
+            break;
+          case "user-disabled":
+            errorMessage =
+                "Der Benutzer mit dieser Email-Adresse wurde deaktiviert";
+            break;
+          case "too-many-requests":
+            errorMessage = "Zu viele Anfragen";
+            break;
+          case "operation-not-allowed":
+            errorMessage = "Einloggen mit Email und Passwort ist nicht erlaubt";
+            break;
+          default:
+            errorMessage = "An undefined Error happened.";
+        }
+        Fluttertoast.showToast(msg: errorMessage!);
+        print(error.code);
+      }
     }
   }
 }
