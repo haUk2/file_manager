@@ -47,7 +47,6 @@ class _LoginScreenState extends State<LoginScreen> {
           }
           return null;
         },
-        //validator: () {},
         onSaved: (value) {
           emailController.text = value!;
         },
