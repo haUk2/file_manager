@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Email and Password Login',
+      title: 'File Manager',
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
