@@ -180,7 +180,6 @@ class _LoginScreenState extends State<LoginScreen> {
         switch (error.code) {
           case "invalid-email":
             errorMessage = "Ihre Email Adresse ist ungültig";
-
             break;
           case "wrong-password":
             errorMessage = "Ihr Passwort ist falsch";
