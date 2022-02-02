@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:email_passwort_login/File%20Picker/filepicker.dart';
 import 'package:email_passwort_login/model/user_model.dart';
 import 'package:email_passwort_login/screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -77,6 +78,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   onPressed: () {
                     logout(context);
                   }),
+              ActionChip(
+                label: Text("Dateien hochladen"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FilePickerDemo()));
+                },
+              ),
             ],
           ),
         ),
