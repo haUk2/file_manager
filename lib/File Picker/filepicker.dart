@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class FilePickerDemo extends StatefulWidget {
+  const FilePickerDemo({Key? key}) : super(key: key);
+
   @override
   _FilePickerDemoState createState() => _FilePickerDemoState();
 }
@@ -16,7 +18,7 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
   bool _loadingPath = false;
   bool _multiPick = false;
   FileType _pickingType = FileType.any;
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
@@ -37,13 +39,16 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
       ))
           ?.files;
     } on PlatformException catch (e) {
+      // ignore: avoid_print
       print("Unsupported operation" + e.toString());
     } catch (ex) {
+      // ignore: avoid_print
       print(ex);
     }
     if (!mounted) return;
     setState(() {
       _loadingPath = false;
+      // ignore: avoid_print
       print(_paths!.first.extension);
       _fileName =
           _paths != null ? _paths!.map((e) => e.name).toString() : '...';
@@ -89,29 +94,29 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
                   child: DropdownButton<FileType>(
                       hint: const Text('LOAD PATH FROM'),
                       value: _pickingType,
-                      items: <DropdownMenuItem<FileType>>[
+                      items: const <DropdownMenuItem<FileType>>[
                         DropdownMenuItem(
-                          child: const Text('FROM AUDIO'),
+                          child: Text('FROM AUDIO'),
                           value: FileType.audio,
                         ),
                         DropdownMenuItem(
-                          child: const Text('FROM IMAGE'),
+                          child: Text('FROM IMAGE'),
                           value: FileType.image,
                         ),
                         DropdownMenuItem(
-                          child: const Text('FROM VIDEO'),
+                          child: Text('FROM VIDEO'),
                           value: FileType.video,
                         ),
                         DropdownMenuItem(
-                          child: const Text('FROM MEDIA'),
+                          child: Text('FROM MEDIA'),
                           value: FileType.media,
                         ),
                         DropdownMenuItem(
-                          child: const Text('FROM ANY'),
+                          child: Text('FROM ANY'),
                           value: FileType.any,
                         ),
                         DropdownMenuItem(
-                          child: const Text('CUSTOM FORMAT'),
+                          child: Text('CUSTOM FORMAT'),
                           value: FileType.custom,
                         ),
                       ],
@@ -129,8 +134,8 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
                           maxLength: 15,
                           autovalidateMode: AutovalidateMode.always,
                           controller: _controller,
-                          decoration:
-                              InputDecoration(labelText: 'File extension'),
+                          decoration: const InputDecoration(
+                              labelText: 'File extension'),
                           keyboardType: TextInputType.text,
                           textCapitalization: TextCapitalization.none,
                         )
@@ -139,8 +144,8 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
                 ConstrainedBox(
                   constraints: const BoxConstraints.tightFor(width: 200.0),
                   child: SwitchListTile.adaptive(
-                    title:
-                        Text('Pick multiple files', textAlign: TextAlign.right),
+                    title: const Text('Pick multiple files',
+                        textAlign: TextAlign.right),
                     onChanged: (bool value) =>
                         setState(() => _multiPick = value),
                     value: _multiPick,
@@ -167,9 +172,9 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
                 ),
                 Builder(
                   builder: (BuildContext context) => _loadingPath
-                      ? Padding(
-                          padding: const EdgeInsets.only(bottom: 10.0),
-                          child: const CircularProgressIndicator(),
+                      ? const Padding(
+                          padding: EdgeInsets.only(bottom: 10.0),
+                          child: CircularProgressIndicator(),
                         )
                       : _directoryPath != null
                           ? ListTile(

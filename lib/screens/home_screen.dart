@@ -18,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
     FirebaseFirestore.instance
@@ -25,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
         .doc(user!.uid)
         .get()
         .then((value) {
-      this.loggedInUser = UserModel.fromMap(value.data());
+      loggedInUser = UserModel.fromMap(value.data());
       setState(() {});
     });
   }
@@ -34,13 +35,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Willkommen"),
+        title: const Text("Willkommen"),
         centerTitle: true,
         backgroundColor: Colors.cyanAccent,
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -49,42 +50,42 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 150,
                 child: Image.asset("assets/logo.png", fit: BoxFit.contain),
               ),
-              Text(
+              const Text(
                 "Willkommen zurück",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Text(
                 "${loggedInUser.firstName} ${loggedInUser.secondName}",
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black54,
                   fontWeight: FontWeight.w500,
                 ),
               ),
               Text(
                 "${loggedInUser.email}",
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black54,
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               ActionChip(
-                  label: Text("Ausloggen"),
+                  label: const Text("Ausloggen"),
                   onPressed: () {
                     logout(context);
                   }),
               ActionChip(
-                label: Text("Dateien hochladen"),
+                label: const Text("Dateien hochladen"),
                 onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => FilePickerDemo()));
+                          builder: (context) => const FilePickerDemo()));
                 },
               ),
             ],
@@ -97,6 +98,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> logout(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => LoginScreen()));
+        MaterialPageRoute(builder: (context) => const LoginScreen()));
   }
 }
