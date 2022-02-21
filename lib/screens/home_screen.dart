@@ -46,7 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
       ),
-      body: Center(
+      
+body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(

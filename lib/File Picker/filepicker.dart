@@ -1,6 +1,7 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:email_passwort_login/screens/home_screen.dart';
 
 class FilePickerDemo extends StatefulWidget {
   const FilePickerDemo({Key? key}) : super(key: key);
@@ -81,7 +82,16 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
         key: _scaffoldKey,
         appBar: AppBar(
             title: const Text('Dateien hochladen'),
-            backgroundColor: Colors.cyanAccent),
+            backgroundColor: Colors.cyanAccent,
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back, color: Colors.redAccent),
+              onPressed: () {
+                Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const HomeScreen()));
+              },
+            ),
+          ),
+
         body: Center(
             child: Padding(
           padding: const EdgeInsets.only(left: 10.0, right: 10.0),
