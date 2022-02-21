@@ -38,6 +38,13 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text("Willkommen"),
         centerTitle: true,
         backgroundColor: Colors.cyanAccent,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.redAccent),
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const LoginScreen()));
+          },
+        ),
       ),
       body: Center(
         child: Padding(
@@ -74,11 +81,6 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 15,
               ),
-              ActionChip(
-                  label: const Text("Ausloggen"),
-                  onPressed: () {
-                    logout(context);
-                  }),
               ActionChip(
                 label: const Text("Dateien hochladen"),
                 onPressed: () {
