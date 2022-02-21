@@ -157,7 +157,7 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
                     children: <Widget>[
                       ElevatedButton(
                         onPressed: () => _openFileExplorer(),
-                        child: const Text("Gallerie öffnen"),
+                        child: const Text("Galerie öffnen"),
                       ),
                       ElevatedButton(
                         onPressed: () => _selectFolder(),
