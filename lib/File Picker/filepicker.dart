@@ -81,17 +81,16 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
       home: Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-            title: const Text('Dateien hochladen'),
-            backgroundColor: Colors.cyanAccent,
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back, color: Colors.redAccent),
-              onPressed: () {
-                Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const HomeScreen()));
-              },
-            ),
+          title: const Text('Dateien hochladen'),
+          backgroundColor: Colors.cyanAccent,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: Colors.redAccent),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()));
+            },
           ),
-
+        ),
         body: Center(
             child: Padding(
           padding: const EdgeInsets.only(left: 10.0, right: 10.0),

@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:email_passwort_login/File%20Picker/filepicker.dart';
+import 'package:email_passwort_login/File%20Picker/file_picker.dart';
 import 'package:email_passwort_login/model/user_model.dart';
 import 'package:email_passwort_login/screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -46,8 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
       ),
-      
-body: Center(
+      body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
@@ -88,7 +87,7 @@ body: Center(
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const FilePickerDemo()));
+                          builder: (context) => const Filepicker()));
                 },
               ),
             ],
