@@ -83,7 +83,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               ActionChip(
                 label: const Text("Dateien hochladen"),
-                backgroundColor: Colors.cyanAccent,
                 onPressed: () {
                   Navigator.push(
                       context,
