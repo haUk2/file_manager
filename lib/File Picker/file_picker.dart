@@ -38,7 +38,9 @@ class _MainPageState extends State<MainPage> {
 
     return Scaffold(
       appBar: AppBar(
+        title: const Text("Datei hochladen"),
         centerTitle: true,
+        backgroundColor: Colors.cyanAccent,
       ),
       body: Container(
         padding: const EdgeInsets.all(32),
@@ -47,7 +49,7 @@ class _MainPageState extends State<MainPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ButtonWidget(
-                text: 'Select File',
+                text: 'Datei auswählen',
                 icon: Icons.attach_file,
                 onClicked: selectFile,
               ),
@@ -59,7 +61,7 @@ class _MainPageState extends State<MainPage> {
               ),
               const SizedBox(height: 48),
               ButtonWidget(
-                text: 'Upload File',
+                text: 'Datei hochladen',
                 icon: Icons.cloud_upload_outlined,
                 onClicked: uploadFile,
               ),
