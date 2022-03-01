@@ -1,3 +1,4 @@
+import 'package:email_passwort_login/config/palette.dart';
 import 'package:email_passwort_login/screens/home_screen.dart';
 import 'package:email_passwort_login/screens/registration_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -24,6 +25,12 @@ class _LoginScreenState extends State<LoginScreen> {
   // firebase
 
   final _auth = FirebaseAuth.instance;
+
+
+  bool isSignupScreen = true;
+  bool isMale = true;
+  bool isRememberMe = false;
+
 
   // String for displaying the error message
 
@@ -62,6 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     //password field
     final passwordField = TextFormField(
+        cursorColor: Palette.bodyschrift,
         autofocus: false,
         controller: passwordController,
         obscureText: true,
@@ -90,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final loginButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
-      color: Colors.cyanAccent,
+      color: Palette.backbutton,
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
@@ -101,16 +109,16 @@ class _LoginScreenState extends State<LoginScreen> {
           "Einloggen",
           textAlign: TextAlign.center,
           style: TextStyle(
-              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+              fontSize: 20, color: Palette.bodyschrift, fontWeight: FontWeight.bold),
         ),
       ),
     );
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Palette.backgroundColorbody,
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            color: Colors.white,
+            color: Palette.backgroundColorbody,
             child: Padding(
               padding: const EdgeInsets.all(36.0),
               child: Form(
@@ -147,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: const Text(
                             "Registrieren",
                             style: TextStyle(
-                              color: Colors.cyanAccent,
+                              color: Palette.bodyschrift,
                               fontWeight: FontWeight.w600,
                               fontSize: 15,
                             ),
