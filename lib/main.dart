@@ -1,4 +1,4 @@
-import 'package:email_passwort_login/screens/login_screen.dart';
+import 'package:email_passwort_login/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const LoginScreen(),
+      home: WelcomeScreen(),
     );
   }
 }
