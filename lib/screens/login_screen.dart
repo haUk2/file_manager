@@ -3,6 +3,7 @@ import 'package:email_passwort_login/screens/registration_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:email_passwort_login/config/palette.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -56,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
           contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Email",
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(20),
           ),
         ));
 
@@ -83,14 +84,14 @@ class _LoginScreenState extends State<LoginScreen> {
           contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Passwort",
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(20),
           ),
         ));
 
     final loginButton = Material(
       elevation: 5,
-      borderRadius: BorderRadius.circular(30),
-      color: Colors.cyanAccent,
+      borderRadius: BorderRadius.circular(20),
+      color: Palette.purple3,
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
@@ -101,18 +102,32 @@ class _LoginScreenState extends State<LoginScreen> {
           "Einloggen",
           textAlign: TextAlign.center,
           style: TextStyle(
-              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+              fontSize: 20,
+              color: Palette.purple1,
+              fontWeight: FontWeight.w800),
         ),
       ),
     );
+    
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Palette.purple5),
+          onPressed: () {
+            // passing this to our root
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
       body: Center(
         child: SingleChildScrollView(
           child: Container(
             color: Colors.white,
             child: Padding(
-              padding: const EdgeInsets.all(36.0),
+              padding: const EdgeInsets.all(40.0),
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -125,9 +140,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           "assets/logo.png",
                           fit: BoxFit.contain,
                         )),
-                    const SizedBox(height: 45),
+                    const SizedBox(height: 35),
                     emailField,
-                    const SizedBox(height: 25),
+                    const SizedBox(height: 35),
                     passwordField,
                     const SizedBox(height: 35),
                     loginButton,
@@ -135,7 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        const Text("Sie haben keinen Account? "),
+                        const Text("Sie haben noch keinen Account? "),
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
@@ -147,9 +162,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: const Text(
                             "Registrieren",
                             style: TextStyle(
-                              color: Colors.cyanAccent,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 15,
+                              fontSize: 16,
+                              color: Palette.purple2,
+                              fontWeight: FontWeight.w800
                             ),
                           ),
                         )

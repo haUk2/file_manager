@@ -4,6 +4,7 @@ import 'package:email_passwort_login/screens/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:email_passwort_login/config/palette.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -50,7 +51,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Vorname",
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(20),
           ),
         ));
     //second name field
@@ -73,7 +74,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Nachname",
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(20),
           ),
         ));
     // email field
@@ -101,7 +102,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Email",
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(20),
           ),
         ));
     // password field
@@ -127,7 +128,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Passwort",
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(20),
           ),
         ));
     // confirm password field
@@ -151,15 +152,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Passwort bestätigen",
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(20),
           ),
         ));
 
     //signup button
     final signUpButton = Material(
       elevation: 5,
-      borderRadius: BorderRadius.circular(30),
-      color: Colors.cyanAccent,
+      borderRadius: BorderRadius.circular(20),
+      color: Palette.purple3,
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
@@ -170,7 +171,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           "Registrieren",
           textAlign: TextAlign.center,
           style: TextStyle(
-              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+              fontSize: 20,
+              color: Palette.purple1,
+              fontWeight: FontWeight.w800),
         ),
       ),
     );
@@ -178,10 +181,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.cyanAccent),
+          icon: const Icon(Icons.arrow_back, color: Palette.purple5),
           onPressed: () {
             // passing this to our root
             Navigator.of(context).pop();
@@ -193,7 +196,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           child: Container(
             color: Colors.white,
             child: Padding(
-              padding: const EdgeInsets.all(36.0),
+              padding: const EdgeInsets.all(40.0),
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -201,22 +204,22 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     SizedBox(
-                        height: 180,
+                        height: 200,
                         child: Image.asset(
                           "assets/logo.png",
                           fit: BoxFit.contain,
                         )),
-                    const SizedBox(height: 45),
+                    const SizedBox(height: 35),
                     firstNameField,
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 15),
                     secondNameField,
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 15),
                     emailField,
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 15),
                     passwordField,
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 15),
                     confirmPasswordField,
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 15),
                     signUpButton,
                     const SizedBox(height: 15),
                   ],

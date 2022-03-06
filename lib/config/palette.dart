@@ -1,11 +1,6 @@
 import 'package:flutter/painting.dart';
 
 class Palette {
-  static const Color backgroundColorappbar = Color(0xFF90A4AE);
-  static const Color backbutton = Color(0xFF546E7A);
-  static const Color backgroundColorbody = Color(0xFFB0BEC5);
-  static const Color bodyschrift = Color(0xFF455A64);
-
   static const Color purple1 = Color(0xFFF3E5F5);
   static const Color purple2 = Color(0xFFE1BEE7);
   static const Color purple3 = Color(0xFFCE93D8);

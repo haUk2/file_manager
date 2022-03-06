@@ -4,6 +4,7 @@ import 'package:email_passwort_login/model/user_model.dart';
 import 'package:email_passwort_login/screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:email_passwort_login/config/palette.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -33,33 +34,58 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final hochladenButton = Material(
+      elevation: 5,
+      borderRadius: BorderRadius.circular(20),
+      color: Palette.purple3,
+      child: MaterialButton(
+        padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+        minWidth: MediaQuery.of(context).size.width,
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const Filepicker()));
+        },
+        child: const Text(
+          "Dateien hochladen",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontSize: 20,
+              color: Palette.purple1,
+              fontWeight: FontWeight.w800),
+        ),
+      ),
+    );
+
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Willkommen"),
-        centerTitle: true,
-        backgroundColor: Colors.cyanAccent,
+        backgroundColor: Colors.white,
+        elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.redAccent),
+          icon: const Icon(Icons.arrow_back, color: Palette.purple5),
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const LoginScreen()));
+            // passing this to our root
+            Navigator.of(context).pop();
           },
         ),
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(40.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               SizedBox(
-                height: 150,
+                height: 200,
                 child: Image.asset("assets/logo.png", fit: BoxFit.contain),
               ),
               const Text(
-                "Willkommen zurück",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                "Willkommen zurück:",
+                style: TextStyle(
+                    fontSize: 25,
+                    color: Palette.purple5,
+                    fontWeight: FontWeight.w800),
               ),
               const SizedBox(
                 height: 10,
@@ -67,29 +93,19 @@ class _HomeScreenState extends State<HomeScreen> {
               Text(
                 "${loggedInUser.firstName} ${loggedInUser.secondName}",
                 style: const TextStyle(
-                  color: Colors.black54,
-                  fontWeight: FontWeight.w500,
-                ),
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w800),
               ),
               Text(
                 "${loggedInUser.email}",
                 style: const TextStyle(
-                  color: Colors.black54,
-                  fontWeight: FontWeight.w500,
-                ),
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w800),
               ),
-              const SizedBox(
-                height: 15,
-              ),
-              ActionChip(
-                label: const Text("Dateien hochladen"),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Filepicker()));
-                },
-              ),
+              const SizedBox(height: 35),
+              hochladenButton,
             ],
           ),
         ),
