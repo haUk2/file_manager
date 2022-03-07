@@ -7,6 +7,9 @@ import 'package:path/path.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:email_passwort_login/config/palette.dart';
 import 'package:email_passwort_login/screens/home_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:email_passwort_login/model/user_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Filepicker extends StatelessWidget {
   static const String title = 'Firebase Upload';
@@ -32,6 +35,23 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   UploadTask? task;
   File? file;
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
+
+  @override
+  void initState() {
+    // ignore: todo
+    // TODO: implement initState
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      loggedInUser = UserModel.fromMap(value.data());
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +66,9 @@ class _MainPageState extends State<MainPage> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Palette.purple5),
           onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const HomeScreen()));
-        },
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const HomeScreen()));
+          },
         ),
       ),
       body: Container(
@@ -65,8 +85,10 @@ class _MainPageState extends State<MainPage> {
               const SizedBox(height: 10),
               Text(
                 fileName,
-                style:
-                    const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w800),
+                style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w800),
               ),
               const SizedBox(height: 50),
               ButtonWidget(
@@ -96,7 +118,7 @@ class _MainPageState extends State<MainPage> {
     if (file == null) return;
 
     final fileName = basename(file!.path);
-    final destination = 'files/$fileName';
+    final destination = 'files/${loggedInUser.email}/$fileName';
 
     task = FirebaseApi.uploadFile(destination, file!);
     setState(() {});

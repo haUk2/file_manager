@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: WelcomeScreen(),
+      home: const WelcomeScreen(),
     );
   }
 }

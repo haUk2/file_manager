@@ -37,6 +37,7 @@ dependencies:
   fluttertoast: ^8.0.8
   file_picker: ^4.3.3
   flutter_auth: ^0.0.1
+  path_provider: ^2.0.9
   
 
 dev_dependencies:
