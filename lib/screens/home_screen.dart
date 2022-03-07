@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_passwort_login/File%20Picker/file_picker.dart';
 import 'package:email_passwort_login/model/user_model.dart';
 import 'package:email_passwort_login/screens/login_screen.dart';
+import 'package:email_passwort_login/screens/welcome_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:email_passwort_login/config/palette.dart';
@@ -64,9 +65,9 @@ class _HomeScreenState extends State<HomeScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Palette.purple5),
           onPressed: () {
-            // passing this to our root
-            Navigator.of(context).pop();
-          },
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const WelcomeScreen()));
+        },
         ),
       ),
       body: Center(

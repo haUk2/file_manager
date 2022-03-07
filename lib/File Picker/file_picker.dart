@@ -5,6 +5,8 @@ import 'package:email_passwort_login/api/firebase_api.dart';
 import 'package:email_passwort_login/widget/button_widget.dart';
 import 'package:path/path.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:email_passwort_login/config/palette.dart';
+import 'package:email_passwort_login/screens/home_screen.dart';
 
 class Filepicker extends StatelessWidget {
   static const String title = 'Firebase Upload';
@@ -37,11 +39,20 @@ class _MainPageState extends State<MainPage> {
         file != null ? basename(file!.path) : 'Keine Datei ausgewählt';
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Palette.purple5),
+          onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()));
+        },
+        ),
       ),
       body: Container(
-        padding: const EdgeInsets.all(32),
+        padding: const EdgeInsets.all(40),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -51,19 +62,19 @@ class _MainPageState extends State<MainPage> {
                 icon: Icons.attach_file,
                 onClicked: selectFile,
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 10),
               Text(
                 fileName,
                 style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                    const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w800),
               ),
-              const SizedBox(height: 48),
+              const SizedBox(height: 50),
               ButtonWidget(
                 text: 'Upload File',
                 icon: Icons.cloud_upload_outlined,
                 onClicked: uploadFile,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               task != null ? buildUploadStatus(task!) : Container(),
             ],
           ),

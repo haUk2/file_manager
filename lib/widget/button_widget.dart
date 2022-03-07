@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:email_passwort_login/config/palette.dart';
 
 class ButtonWidget extends StatelessWidget {
   final IconData icon;
@@ -14,8 +15,12 @@ class ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ElevatedButton(
+        
+        
+        
         style: ElevatedButton.styleFrom(
-          primary: Colors.cyanAccent,
+          elevation: 5,
+          primary: Palette.purple3,
           minimumSize: const Size.fromHeight(50),
         ),
         child: buildContent(),
@@ -23,13 +28,14 @@ class ButtonWidget extends StatelessWidget {
       );
 
   Widget buildContent() => Row(
+        
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 28),
-          const SizedBox(width: 16),
+          Icon(icon, size: 24, color: Palette.purple1),
+          const SizedBox(width: 15),
           Text(
             text,
-            style: const TextStyle(fontSize: 22, color: Colors.black),
+            style: const TextStyle(fontSize: 20, color: Palette.purple1, fontWeight: FontWeight.w800),
           ),
         ],
       );
