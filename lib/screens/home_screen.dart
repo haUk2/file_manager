@@ -6,6 +6,7 @@ import 'package:email_passwort_login/screens/welcome_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:email_passwort_login/config/palette.dart';
+import 'package:email_passwort_login/screens/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -38,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final hochladenButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(20),
-      color: Palette.purple3,
+      color: Palette.purpleaccent2,
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
@@ -50,9 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
           "Dateien hochladen",
           textAlign: TextAlign.center,
           style: TextStyle(
-              fontSize: 20,
-              color: Palette.purple1,
-              fontWeight: FontWeight.w800),
+              fontSize: 20, color: Colors.white, fontWeight: FontWeight.w800),
         ),
       ),
     );
@@ -60,16 +59,30 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Palette.purple5),
-          onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const WelcomeScreen()));
-        },
-        ),
-      ),
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: Palette.purpleaccent2),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const WelcomeScreen()));
+            },
+          ),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.brightness_5_sharp,
+                  color: Palette.purpleaccent2),
+              tooltip: 'Settings',
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SettingsScreen()));
+              },
+            ),
+          ]),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(40.0),
@@ -85,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 "Willkommen zurück:",
                 style: TextStyle(
                     fontSize: 25,
-                    color: Palette.purple5,
+                    color: Palette.purpleaccent2,
                     fontWeight: FontWeight.w800),
               ),
               const SizedBox(

@@ -20,7 +20,7 @@ class ButtonWidget extends StatelessWidget {
         
         style: ElevatedButton.styleFrom(
           elevation: 5,
-          primary: Palette.purple3,
+          primary: Palette.purpleaccent2,
           minimumSize: const Size.fromHeight(50),
         ),
         child: buildContent(),
@@ -31,11 +31,11 @@ class ButtonWidget extends StatelessWidget {
         
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 24, color: Palette.purple1),
+          Icon(icon, size: 24, color: Colors.white),
           const SizedBox(width: 15),
           Text(
             text,
-            style: const TextStyle(fontSize: 20, color: Palette.purple1, fontWeight: FontWeight.w800),
+            style: const TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w800),
           ),
         ],
       );

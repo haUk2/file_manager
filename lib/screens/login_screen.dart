@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final loginButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(20),
-      color: Palette.purple3,
+      color: Palette.purpleaccent2,
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
@@ -103,19 +103,19 @@ class _LoginScreenState extends State<LoginScreen> {
           textAlign: TextAlign.center,
           style: TextStyle(
               fontSize: 20,
-              color: Palette.purple1,
+              color: Colors.white,
               fontWeight: FontWeight.w800),
         ),
       ),
     );
-    
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Palette.purple5),
+          icon: const Icon(Icons.arrow_back, color: Palette.purpleaccent2),
           onPressed: () {
             // passing this to our root
             Navigator.of(context).pop();
@@ -162,10 +162,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: const Text(
                             "Registrieren",
                             style: TextStyle(
-                              fontSize: 16,
-                              color: Palette.purple2,
-                              fontWeight: FontWeight.w800
-                            ),
+                                fontSize: 16,
+                                color: Palette.purpleaccent4,
+                                fontWeight: FontWeight.w800),
                           ),
                         )
                       ],

@@ -18,7 +18,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     final loginButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(20),
-      color: Palette.purple3,
+      color: Palette.purpleaccent2,
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
@@ -31,7 +31,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           textAlign: TextAlign.center,
           style: TextStyle(
               fontSize: 20,
-              color: Palette.purple1,
+              color: Colors.white,
               fontWeight: FontWeight.w800),
         ),
       ),
@@ -40,7 +40,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     final registrationButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(20),
-      color: Palette.purple3,
+      color: Palette.purpleaccent2,
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
@@ -55,7 +55,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           textAlign: TextAlign.center,
           style: TextStyle(
               fontSize: 20,
-              color: Palette.purple1,
+              color: Colors.white,
               fontWeight: FontWeight.w800),
         ),
       ),

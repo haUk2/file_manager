@@ -20,7 +20,7 @@ class Filepicker extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
         debugShowCheckedModeBanner: false,
         title: title,
-        theme: ThemeData(primarySwatch: Colors.cyan),
+        theme: ThemeData(primarySwatch: Colors.purple),
         home: const MainPage(),
       );
 }
@@ -64,7 +64,7 @@ class _MainPageState extends State<MainPage> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Palette.purple5),
+          icon: const Icon(Icons.arrow_back, color: Palette.purpleaccent2),
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const HomeScreen()));
