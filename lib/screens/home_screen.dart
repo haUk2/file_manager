@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:email_passwort_login/File%20Picker/file_download.dart';
 import 'package:email_passwort_login/File%20Picker/file_picker.dart';
 import 'package:email_passwort_login/model/user_model.dart';
 import 'package:email_passwort_login/screens/login_screen.dart';
@@ -49,6 +50,25 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         child: const Text(
           "Dateien hochladen",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontSize: 20, color: Colors.white, fontWeight: FontWeight.w800),
+        ),
+      ),
+    );
+    final downloadButton = Material(
+      elevation: 5,
+      borderRadius: BorderRadius.circular(20),
+      color: Palette.purpleaccent2,
+      child: MaterialButton(
+        padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+        minWidth: MediaQuery.of(context).size.width,
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const FileDownload()));
+        },
+        child: const Text(
+          "Dateien herunterladen",
           textAlign: TextAlign.center,
           style: TextStyle(
               fontSize: 20, color: Colors.white, fontWeight: FontWeight.w800),
@@ -120,6 +140,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 35),
               hochladenButton,
+              const SizedBox(height: 35),
+              downloadButton,
             ],
           ),
         ),
