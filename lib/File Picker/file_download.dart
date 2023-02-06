@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:email_passwort_login/api/firebase_api.dart';
 import 'package:email_passwort_login/model/firebase_file.dart';
 import 'package:email_passwort_login/model/user_model.dart';
